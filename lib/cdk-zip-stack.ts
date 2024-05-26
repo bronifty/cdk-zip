@@ -9,7 +9,7 @@ export class CdkZipStack extends cdk.Stack {
 
     new cdk.aws_lambda.Function(this, "fsreadfile", {
       runtime: cdk.aws_lambda.Runtime.NODEJS_LATEST,
-      handler: "index.handler",
+      handler: "lambda.handler",
       code: cdk.aws_lambda.Code.fromAsset(
         path.join(__dirname, "services/readfile")
       ),
