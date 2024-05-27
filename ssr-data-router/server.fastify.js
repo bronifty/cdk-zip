@@ -1,6 +1,8 @@
 let path = require("path");
 let fsp = require("fs/promises");
 let express = require("express");
+const fastify = require("fastify")();
+const router = express.Router();
 
 process.env.NODE_ENV = "production";
 
@@ -12,7 +14,7 @@ function resolve(p) {
 }
 
 async function createServer() {
-  let app = express();
+  // let app = express();
   /**
    * @type {import('vite').ViteDevServer}
    */
@@ -24,13 +26,13 @@ async function createServer() {
       server: { middlewareMode: "ssr" },
     });
 
-    app.use(vite.middlewares);
+    router.use(vite.middlewares);
   } else {
-    app.use(require("compression")());
-    app.use(express.static(resolve("dist/client")));
+    router.use(require("compression")());
+    router.use(express.static(resolve("dist/client")));
   }
 
-  app.use("*", async (req, res) => {
+  router.use("*", async (req, res) => {
     let url = req.originalUrl;
 
     try {
@@ -70,12 +72,21 @@ async function createServer() {
       res.status(500).end(error.stack);
     }
   });
+  fastify.register(require("@fastify/express")).after(() => {
+    fastify.use(express.urlencoded({ extended: false })); // for Postman x-www-form-urlencoded
+    fastify.use(express.json());
 
-  return app;
+    fastify.use(router);
+  });
+  return fastify;
 }
 
-createServer().then((app) => {
-  app.listen(3000, () => {
-    console.log("HTTP server is running at http://localhost:3000");
+if (require.main === module) {
+  // called directly i.e. "node app"
+  createServer().then((fastify) => {
+    fastify.listen({ port: 3000 }, () => console.log("listening on port 3000"));
   });
-});
+} else {
+  // required as a module => executed on aws lambda
+  module.exports = createServer;
+}
