@@ -4,7 +4,7 @@ import express from "express";
 import fastify from "fastify";
 import { createServer as createViteServer } from "vite";
 import compression from "compression";
-import { tsImport } from "tsx/esm/api";
+// import { tsImport } from "tsx/esm/api";
 
 const router = express.Router();
 
@@ -83,10 +83,8 @@ async function createServer() {
       res.status(500).end(error.stack);
     }
   });
-  const registerFastify = await tsImport(
-    "./registerFastify.ts",
-    import.meta.url
-  );
+
+  const registerFastify = await import("./registerFastify.js", import.meta.url);
   const fastify = registerFastify(router);
   return fastify;
 }
@@ -98,3 +96,29 @@ if (require.main === module) {
   });
 }
 export { createServer };
+
+// import https from "https";
+// function fetchData(url) {
+//   return new Promise((resolve, reject) => {
+//     https.get(url, (res) => {
+//       let data = "";
+//       res.on("data", (chunk) => {
+//         data += chunk;
+//       });
+//       res.on("end", () => {
+//         resolve(data);
+//       });
+//       res.on("error", (err) => {
+//         reject(err);
+//       });
+//     });
+//   });
+// }
+// // Usage
+// fetchData("https://domain.tld/file.js")
+//   .then((data) => {
+//     console.log(data); // Process data here
+//   })
+//   .catch((error) => {
+//     console.error("Error fetching data:", error);
+//   });
