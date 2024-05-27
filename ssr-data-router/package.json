@@ -7,7 +7,8 @@
     "build:client": "vite build --outDir dist/client --ssrManifest",
     "build:server": "vite build --ssr src/entry.server.tsx --outDir dist/server",
     "start": "cross-env NODE_ENV=production node server.js",
-    "debug": "node --inspect-brk server.js"
+    "debug": "node --inspect-brk server.js",
+    "fastify": "esbuild --bundle --outfile=./dist/app.js --platform=node --target=node20 ./app.js && esbuild --bundle --outfile=./dist/lambda.js --platform=node --target=node20 ./lambda.js"
   },
   "dependencies": {
     "@fastify/express": "^3.0.0",
@@ -29,6 +30,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.0.1",
+    "esbuild": "^0.21.4",
     "typescript": "^4.9.5",
     "vite": "^4.0.4"
   }
