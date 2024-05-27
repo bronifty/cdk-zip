@@ -1,0 +1,61 @@
+{
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js?commonjs-exports": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/index.js?commonjs-module": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react-jsx-runtime.development.js?commonjs-exports": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react.development.js?commonjs-module": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/react@18.3.1/node_modules/react/index.js?commonjs-module": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-runtime.js?commonjs-module": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js?commonjs-exports": [
+  ],
+  "\u0000/Users/bro/codes/temp/cdk-zip/ssr-data-router/node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/index.js?commonjs-module": [
+  ],
+  "\u0000commonjsHelpers.js": [
+  ],
+  "\u0000react/jsx-runtime": [
+  ],
+  "\u0000vite/modulepreload-polyfill": [
+  ],
+  "\u0000vite/preload-helper": [
+  ],
+  "index.html": [
+  ],
+  "node_modules/.pnpm/@remix-run+router@1.16.1/node_modules/@remix-run/router/dist/router.js": [
+  ],
+  "node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js": [
+  ],
+  "node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/client.js": [
+  ],
+  "node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/index.js": [
+  ],
+  "node_modules/.pnpm/react-router-dom@6.23.1_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-router-dom/dist/index.js": [
+  ],
+  "node_modules/.pnpm/react-router@6.23.1_react@18.3.1/node_modules/react-router/dist/index.js": [
+  ],
+  "node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react-jsx-runtime.development.js": [
+  ],
+  "node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react.development.js": [
+  ],
+  "node_modules/.pnpm/react@18.3.1/node_modules/react/index.js": [
+  ],
+  "node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-runtime.js": [
+  ],
+  "node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/cjs/scheduler.development.js": [
+  ],
+  "node_modules/.pnpm/scheduler@0.23.2/node_modules/scheduler/index.js": [
+  ],
+  "src/App.tsx": [
+  ],
+  "src/entry.client.tsx": [
+  ],
+  "src/index.css": [
+  ],
+  "src/lazy.tsx": [
+    "/assets/lazy-1fe6caf7.js"
+  ]
+}
