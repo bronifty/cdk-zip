@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsx": "pnpx tsx index.mts"
+    "tsx": "pnpx tsx watch index.mts"
   },
   "keywords": [],
   "author": "",
