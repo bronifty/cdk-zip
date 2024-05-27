@@ -1,3 +1,4 @@
 - [https://nodejs.org/en](https://nodejs.org/en)
 - [https://tsx.is/getting-started](https://tsx.is/getting-started)
 - [https://www.youtube.com/watch?v=evCnOaVaOTo](https://www.youtube.com/watch?v=evCnOaVaOTo)
+- [https://joyeecheung.github.io/blog/2024/03/18/require-esm-in-node-js/](https://joyeecheung.github.io/blog/2024/03/18/require-esm-in-node-js/)
