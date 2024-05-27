@@ -1,2 +1,3 @@
-https://nodejs.org/en
-https://tsx.is/getting-started
+- [https://nodejs.org/en](https://nodejs.org/en)
+- [https://tsx.is/getting-started](https://tsx.is/getting-started)
+- [https://www.youtube.com/watch?v=evCnOaVaOTo](https://www.youtube.com/watch?v=evCnOaVaOTo)
