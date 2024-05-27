@@ -1,7 +1,11 @@
-let path = require("path");
-let fsp = require("fs/promises");
-let express = require("express");
-const fastify = require("fastify")();
+import path from "node:path";
+import fsp from "node:fs/promises";
+import express from "express";
+import fastify from "fastify";
+import { createServer as createViteServer } from "vite";
+import compression from "compression";
+import { tsImport } from "tsx/esm/api";
+
 const router = express.Router();
 
 process.env.NODE_ENV = "production";
@@ -10,7 +14,7 @@ let root = process.cwd();
 let isProduction = process.env.NODE_ENV === "production";
 
 function resolve(p) {
-  return path.resolve(__dirname, p);
+  return path.join(import.meta.dirname, p);
 }
 
 async function createServer() {
@@ -21,14 +25,14 @@ async function createServer() {
   let vite;
 
   if (!isProduction) {
-    vite = await require("vite").createServer({
+    vite = await createViteServer({
       root,
       server: { middlewareMode: "ssr" },
     });
 
     router.use(vite.middlewares);
   } else {
-    router.use(require("compression")());
+    router.use(compression());
     router.use(express.static(resolve("dist/client")));
   }
 
@@ -50,7 +54,14 @@ async function createServer() {
           resolve("dist/client/index.html"),
           "utf8"
         );
-        render = require(resolve("dist/server/entry.server.mjs")).render;
+
+        template = await fsp.readFile(
+          resolve("dist/client/index.html"),
+          "utf8"
+        );
+        render = import(resolve("dist/server/entry.server.mjs")).then(
+          (data) => data.render
+        );
       }
 
       try {
@@ -72,12 +83,11 @@ async function createServer() {
       res.status(500).end(error.stack);
     }
   });
-  fastify.register(require("@fastify/express")).after(() => {
-    fastify.use(express.urlencoded({ extended: false })); // for Postman x-www-form-urlencoded
-    fastify.use(express.json());
-
-    fastify.use(router);
-  });
+  const registerFastify = await tsImport(
+    "./registerFastify.ts",
+    import.meta.url
+  );
+  const fastify = registerFastify(router);
   return fastify;
 }
 
@@ -86,7 +96,5 @@ if (require.main === module) {
   createServer().then((fastify) => {
     fastify.listen({ port: 3000 }, () => console.log("listening on port 3000"));
   });
-} else {
-  // required as a module => executed on aws lambda
-  module.exports = createServer;
 }
+export { createServer };
